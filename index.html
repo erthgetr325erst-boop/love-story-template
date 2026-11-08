@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- ✏️ عدل عنوان الصفحة من هنا أو يتم تحديثه تلقائياً من ملف config.js -->
+    <title>💕 موقع رومانسي | اعتذار وحب 💕</title>
+    
+    <!-- 🎨 ملف التنسيقات والتصميم الخارجي -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ========================================================
+     🔒 [1] شاشة كلمة المرور (PASSWORD LOCK SCREEN)
+     - لتغيير كلمة السر أو التلميح، عدل ملف config.js
+     ======================================================== -->
+<div id="password-screen">
+    <!-- قلوب متحركة في الخلفية -->
+    <canvas id="pw-canvas" style="position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;"></canvas>
+    <div class="password-box">
+        <div class="lock-icon">🔐</div>
+        <h2>ممنوع الدخول 💕</h2>
+        <!-- ✏️ اسم الحبيبة (يتم تحديثه تلقائياً من config.js) -->
+        <p>المكان ده خاص بـ <span class="partner-name">[اسم الحبيبة]</span> بس</p>
+        <div class="password-input-wrapper">
+            <input type="password" id="password-input" placeholder="ادخلي الباسورد...">
+        </div>
+        <button class="password-btn" onclick="checkPassword()">ادخلي يا قمر 🌙</button>
+        <p class="password-error" id="pw-error">الباسورد غلط يا حبيبتي 💔 جربي تاني</p>
+        <!-- ✏️ تلميح كلمة المرور -->
+        <p class="password-hint" id="password-hint-text">💡 التلميح: يوم ما اتعرفنا على بعض</p>
+    </div>
+</div>
+
+<!-- ========================================================
+     💖 المحتوى الرئيسي للموقع (MAIN CONTENT)
+     ======================================================== -->
+<div id="main-content">
+    <canvas id="hearts-canvas"></canvas>
+
+    <!-- ========================================================
+         💖 [2] قسم الترحيب الرئيسي (HERO SECTION)
+         - عدل اسم الحبيبة أو الوصف الرومانسي هنا
+         ======================================================== -->
+    <section class="hero">
+        <div class="hero-heart">💖</div>
+        <!-- ✏️ اسم الحبيبة -->
+        <h1 class="partner-name">[اسم الحبيبة]</h1>
+        <p class="subtitle">بنتي وحبيبتي وصاحبتي وأختي 🌹</p>
+        <p class="names">~ أنتِ كل حياتي ~</p>
+        <div class="scroll-indicator">⬇️</div>
+    </section>
+
+    <!-- ========================================================
+         💌 [3] قسم الاعتذار (APOLOGY SECTION)
+         - اكتب هنا رسالة الاعتذار والكلام الصادق اللي من قلبك
+         ======================================================== -->
+    <section class="apology-section fade-in">
+        <div class="apology-card">
+            <div class="rose">🌹</div>
+            <h2>أنا آسف يا <span class="partner-name">[اسم الحبيبة]</span> 💔</h2>
+            <p>
+                أنا عارف إني غلطت... وعارف إنك زعلتي مني
+                <br>
+                بس تعرفي إيه؟ أنتِ <span class="highlight">أغلى إنسانة</span> في حياتي
+                <br>
+                ومفيش حاجة في الدنيا تستاهل إنك تزعلي مني
+                <br>
+                أنا من غيرك مش بعرف أعيش... ومش عايز أعيش 💕
+            </p>
+            <p>
+                كل لحظة بعيد عنك بحس إن الدنيا <span class="highlight">واقفة</span>
+                <br>
+                وكل ثانية من غير ابتسامتك بتكون <span class="highlight">صعبة</span>
+                <br>
+                سامحيني يا حبيبتي... أنا محتاجك جنبي دايماً ❤️
+            </p>
+        </div>
+    </section>
+
+    <!-- ========================================================
+         👸 [4] أنتِ كل حاجة في حياتي (ROLES SECTION)
+         - يمكنك تعديل أو إضافة كروت تمثل مكانتها عندك
+         ======================================================== -->
+    <section class="roles-section fade-in">
+        <h2>أنتِ كل حاجة في حياتي 💫</h2>
+        <div class="roles-grid">
+            <div class="role-card">
+                <span class="emoji">👸</span>
+                <h3>حبيبتي</h3>
+                <p>أنتِ الحب الأول والأخير<br>قلبي مش عارف غيرك</p>
+            </div>
+            <div class="role-card">
+                <span class="emoji">👧</span>
+                <h3>بنتي</h3>
+                <p>بدلعك وأحميكي<br>وأخاف عليكي من كل حاجة</p>
+            </div>
+            <div class="role-card">
+                <span class="emoji">👭</span>
+                <h3>صحبتي</h3>
+                <p>أقرب صاحبة ليا<br>بقولك كل حاجة وبشاركك كل لحظة</p>
+            </div>
+            <div class="role-card">
+                <span class="emoji">💝</span>
+                <h3>أختي</h3>
+                <p>بحبك حب الأخت<br>وبخاف عليكي وبغير عليكي</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================================
+         📖 [5] تايملاين قصة الحب (TIMELINE SECTION)
+         - عدل التواريخ والنصوص لكل حدث مميز في علاقتكم
+         ======================================================== -->
+    <section class="timeline-section fade-in">
+        <h2>قصتنا الجميلة 📖</h2>
+        <div class="timeline">
+            <!-- حدث 1: تاريخ الميلاد -->
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-emoji">🎂</div>
+                    <div class="timeline-date">[تاريخ الميلاد - DD / MM / YYYY]</div>
+                    <div class="timeline-text">يوم ما ربنا خلق أحلى إنسانة في الدنيا... يوم ميلاد <span class="partner-name">[اسم الحبيبة]</span> 🌟</div>
+                </div>
+                <div class="timeline-dot"></div>
+            </div>
+
+            <!-- حدث 2: تاريخ التعارف -->
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-emoji">✨</div>
+                    <div class="timeline-date">[تاريخ التعارف - DD / MM / YYYY]</div>
+                    <div class="timeline-text">اليوم اللي غيّر حياتي... أول مرة اتعرفت على <span class="partner-name">[اسم الحبيبة]</span> ❤️ أجمل صدفة في عمري</div>
+                </div>
+                <div class="timeline-dot"></div>
+            </div>
+
+            <!-- حدث 3: تاريخ بداية الحب أو الاعتراف -->
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-emoji">💘</div>
+                    <div class="timeline-date">[تاريخ بداية الحب - DD / MM / YYYY]</div>
+                    <div class="timeline-text">اليوم اللي قلبي اختارك فيه... حسيت إني لقيت نصفي التاني 💕</div>
+                </div>
+                <div class="timeline-dot"></div>
+            </div>
+
+            <!-- حدث 4: أول مرة كلمة بحبك -->
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-emoji">💍</div>
+                    <div class="timeline-date">[تاريخ أول كلمة بحبك - DD / MM / YYYY]</div>
+                    <div class="timeline-text">أول مرة قولتلك فيها "بحبك"... وكانت أصدق كلمة قولتها في حياتي 🥺❤️</div>
+                </div>
+                <div class="timeline-dot"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================================
+         🎂 [6] قسم عيد الميلاد وحساب السن (BIRTHDAY SECTION)
+         - العمر بيتحسب تلقائياً من تاريخ الميلاد في ملف config.js
+         ======================================================== -->
+    <section class="birthday-section fade-in">
+        <div class="birthday-card">
+            <div class="cake">🎂</div>
+            <h2>عيد ميلاد حبيبتي 🎉</h2>
+            <!-- ✏️ نص تاريخ الميلاد -->
+            <p id="birthday-display-date">[يوم / شهر / سنة الميلاد]</p>
+            <span class="age" id="age-display">-- سنة</span>
+            <p>سنة وأنتِ أجمل حاجة في الدنيا 🌹</p>
+        </div>
+    </section>
+
+    <!-- ========================================================
+         💞 [7] عدّاد الحب بالثواني (LOVE COUNTER SECTION)
+         - بيعد الوقت بدقة بالثانية من تاريخ التعارف المحدد في config.js
+         ======================================================== -->
+    <section class="counter-section fade-in">
+        <h2>عدّاد الحب 💞</h2>
+        <!-- ✏️ عنوان بداية العلاقة -->
+        <p style="color: rgba(255,255,255,0.5); margin-bottom: 30px;" id="counter-start-label">من يوم [تاريخ التعارف] وإحنا مع بعض</p>
+        <div class="counters">
+            <div class="counter-box">
+                <span class="number" id="counter-days">0</span>
+                <span class="label">يوم</span>
+            </div>
+            <div class="counter-box">
+                <span class="number" id="counter-hours">0</span>
+                <span class="label">ساعة</span>
+            </div>
+            <div class="counter-box">
+                <span class="number" id="counter-minutes">0</span>
+                <span class="label">دقيقة</span>
+            </div>
+            <div class="counter-box">
+                <span class="number" id="counter-seconds">0</span>
+                <span class="label">ثانية</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================================
+         🎵 [8] قسم مشغل الأغنية (MUSIC PLAYER SECTION)
+         - ضع كود فيديو يوتيوب في ملف config.js
+         ======================================================== -->
+    <section class="music-section fade-in">
+        <div class="music-player">
+            <div class="note">🎵</div>
+            <h3>أغنية ليكي يا حبيبتي 🎶</h3>
+            <!-- ✏️ اسم الأغنية -->
+            <p style="color: rgba(255,255,255,0.5); margin-bottom: 20px; font-size: 16px;" id="song-title-display">[اسم الأغنية - اسم الفنان]</p>
+            <div style="border-radius: 20px; overflow: hidden; max-width: 420px; margin: 0 auto; box-shadow: 0 10px 40px rgba(0,0,0,0.4);">
+                <iframe 
+                    id="youtube-iframe"
+                    width="100%" 
+                    height="240" 
+                    src="https://www.youtube.com/embed/KLJA-srM_yM?rel=0&modestbranding=1&color=white" 
+                    title="Romantic Song" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen
+                    style="display:block;">
+                </iframe>
+            </div>
+            <div class="audio-bars active" style="margin-top: 20px;">
+                <div class="audio-bar" style="height:10px"></div>
+                <div class="audio-bar" style="height:15px"></div>
+                <div class="audio-bar" style="height:8px"></div>
+                <div class="audio-bar" style="height:20px"></div>
+                <div class="audio-bar" style="height:12px"></div>
+                <div class="audio-bar" style="height:18px"></div>
+                <div class="audio-bar" style="height:10px"></div>
+                <div class="audio-bar" style="height:15px"></div>
+                <div class="audio-bar" style="height:8px"></div>
+            </div>
+            <p style="color: rgba(255,255,255,0.3); font-size: 13px; margin-top: 15px;">🎧 اضغطي Play عشان تسمعي الأغنية</p>
+        </div>
+    </section>
+
+    <!-- ========================================================
+         💌 [9] رسالة من القلب (LOVE LETTER SECTION)
+         - اكتب هنا رسالتك الخاصة من القلب، وتوقيعك في النهاية
+         ======================================================== -->
+    <section class="letter-section fade-in">
+        <div class="letter">
+            <h2>رسالة من القلب 💌</h2>
+            <p>
+                حبيبتي <span class="partner-name">[اسم الحبيبة]</span>...
+            </p>
+            <p>
+                أنا مش بعرف أقول كلام كتير
+                <br>بس اللي أعرفه إنك أنتِ كل الدنيا بالنسبالي
+                <br>من يوم ما عرفتك حياتي اتقلبت
+                <br>بقيت شخص تاني... شخص أحسن
+            </p>
+            <p>
+                أنتِ مش بس حبيبتي
+                <br>أنتِ بنتي اللي بدلعها
+                <br>وصحبتي اللي بقولها كل حاجة
+                <br>وأختي اللي بغار عليها
+            </p>
+            <p>
+                سامحيني على أي حاجة ضايقتك
+                <br>أنا وعد إني هتغير وهكون أحسن
+                <br>بس محتاجك جنبي... محتاج ابتسامتك
+                <br>محتاج أسمع صوتك وأنتِ بتقولي "أنا كمان بحبك"
+            </p>
+            <p style="color: var(--gold); font-size: 24px;">
+                بحبك من كل قلبي يا <span class="partner-name">[اسم الحبيبة]</span> ❤️
+            </p>
+            <div class="signature">
+                ~ <span id="sender-signature">[اسمك أو توقيعك - مثلاً: حبيبك للأبد]</span> 💕
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================================
+         🤞 [10] قسم الوعود (PROMISES SECTION)
+         ======================================================== -->
+    <section class="promise-section fade-in">
+        <h2>وعودي ليكي 🤞</h2>
+        <div class="promises">
+            <div class="promise-item">
+                <div class="icon">🛡️</div>
+                <p>هحميكي من كل حاجة وحشة في الدنيا</p>
+            </div>
+            <div class="promise-item">
+                <div class="icon">😊</div>
+                <p>هخليكي تبتسمي كل يوم ومش هسيب حاجة تزعلك</p>
+            </div>
+            <div class="promise-item">
+                <div class="icon">🤝</div>
+                <p>هكون جنبك في كل لحظة... في الحلو والوحش</p>
+            </div>
+            <div class="promise-item">
+                <div class="icon">💪</div>
+                <p>هتغير عشانك وهكون أحسن نسخة من نفسي</p>
+            </div>
+            <div class="promise-item">
+                <div class="icon">👂</div>
+                <p>هسمعك دايماً وهاخد كلامك جد</p>
+            </div>
+            <div class="promise-item">
+                <div class="icon">💕</div>
+                <p>هحبك كل يوم أكتر من اللي قبله</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================================
+         💖 [11] الخاتمة الرومانسية (FINAL SECTION)
+         ======================================================== -->
+    <section class="final-section fade-in">
+        <div class="big-heart">💖</div>
+        <h2>أنتِ كل حياتي يا <span class="partner-name">[اسم الحبيبة]</span></h2>
+        <p>
+            من غيرك الدنيا ملهاش طعم
+            <br>أنتِ النور اللي بينور أيامي
+            <br>وبحبك لآخر يوم في عمري
+        </p>
+        <div class="forever-badge">🔒 حبيبتي للأبد ♾️</div>
+    </section>
+
+    <footer style="text-align:center; padding: 40px 20px; color: rgba(255,255,255,0.2); font-size: 14px; position: relative; z-index: 2;">
+        صنع بكل حب 💕 من قلب بيحبك
+    </footer>
+</div>
+
+<!-- ========================================================
+     ⚙️ ملفات البرمجة والإعدادات
+     ======================================================== -->
+<!-- 1. ملف الإعدادات والبيانات (هنا تضع الأسماء والتواريخ والباسورد) -->
+<script src="config.js"></script>
+
+<!-- 2. ملف الأنيميشن والتأثيرات التفاعلية -->
+<script src="script.js"></script>
+
+</body>
+</html>
